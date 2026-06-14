@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        /* --- Design System & Reset --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg-main: #0b0f19;       /* Deep space blue/black */
+            --bg-card: #131a26;       /* Lighter dark for contrast */
+            --accent-glow: #3b82f6;   /* Electric Blue */
+            --accent-neon: #10b981;   /* Emerald Green */
+            --text-primary: #f3f4f6;  /* Off-white */
+            --text-muted: #9ca3af;    /* Soft gray */
+            --border-color: #222e45;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-main);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f293d;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-glow);
+        }
+
+        /* --- Navigation (Glassmorphism) --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(11, 15, 25, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 10%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(45deg, var(--accent-glow), var(--accent-neon));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2.5rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--text-primary);
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+
+        /* --- Layout Sections --- */
+        section {
+            padding: 8rem 10% 4rem 10%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            height: 1px;
+            flex-grow: 1;
+            background: linear-gradient(90deg, var(--border-color), transparent);
+        }
+
+        /* --- Hero Section --- */
+        #hero {
+            background: radial-gradient(circle at 90% 10%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+                        radial-gradient(circle at 10% 90%, rgba(16, 185, 129, 0.05) 0%, transparent 40%);
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero-content .subtitle {
+            color: var(--accent-neon);
+            font-family: monospace;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .hero-content h1 span {
+            background: linear-gradient(45deg, var(--accent-glow), #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.85rem 2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--accent-glow);
+            color: white;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.25);
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(59, 130, 246, 0.35);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: var(--text-muted);
+        }
+
+        /* --- About Section --- */
+        .about-wrapper {
+            max-width: 800px;
+        }
+
+        .about-wrapper p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Tech Tags */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .tech-tag {
+            background: rgba(34, 46, 69, 0.4);
+            border: 1px solid var(--border-color);
+            color: var(--accent-glow);
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        /* --- Projects Section --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-img {
+            height: 210px;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #475569;
+            font-family: monospace;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        /* Subtle glowing dots on cards just for aesthetics */
+        .project-card:hover .project-img::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-neon);
+            box-shadow: 0 0 8px var(--accent-neon);
+        }
+
+        .project-info {
+            padding: 1.75rem;
+        }
+
+        .project-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .project-info p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            min-height: 4.5em; 
+        }
+
+        .project-link {
+            color: var(--accent-glow);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.2s;
+        }
+
+        .project-card:hover .project-link {
+            color: #60a5fa;
+            gap: 10px;
+        }
+
+        /* --- Contact Section --- */
+        .contact-container {
+            max-width: 550px;
+            width: 100%;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        form input, form textarea {
+            background: #111827;
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        form input:focus, form textarea:focus {
+            outline: none;
+            border-color: var(--accent-glow);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+
+        form textarea {
+            resize: vertical;
+            height: 160px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background-color: #070a10;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- Responsive UI --- */
+        @media (max-width: 768px) {
+            nav { padding: 1rem 5%; }
+            nav ul { display: none; } 
+            section { padding: 7rem 6% 3rem 6%; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .btn-group { flex-direction: column; }
+            .btn { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">// Sabiha.Alam</div>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <span class="subtitle">Hi, my name is</span>
+            <h1>Sabiha <span> Alam.</span></h1>
+            <p>I construct premium digital products, focusing on clean code, cutting-edge UI interactions, and high-performance frontend engineering.</p>
+            <div class="btn-group">
+                <a href="#projects" class="btn btn-primary">Check out my work</a>
+                <a href="#contact" class="btn btn-secondary">Get in touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-wrapper">
+            <p>I enjoy building things that live on the internet. My interest in web development started back in school when I decided to customize a blogging template—turns out hacking together custom HTML & CSS taught me a lot!</p>
+            <p>Fast-forward to today, and I’ve had the privilege of working on complex enterprise software, interactive web apps, and modern user interfaces.</p>
+            
+            <p style="font-size: 1rem; margin-top: 2rem; margin-bottom: 0.5rem; font-weight: 600;">Technologies I enjoy working with:</p>
+            <div class="tech-stack">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">JavaScript (ES6+)</span>
+                <span class="tech-tag">Web Cloning & UI Design</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Selected Projects</h2>
+        <div class="project-grid">
+            
+            <!-- Project 1: Bano Qabil Web Clone -->
+            <div class="project-card">
+                <div class="project-img" style="color: var(--accent-neon);">&lt; bano-qabil-clone /&gt;</div>
+                <div class="project-info">
+                    <h3>Bano Qabil Web Clone</h3>
+                    <p>A responsive front-end replica of the official Bano Qabil IT Program platform. Built with semantic HTML structures, accurate structural layouts, customized navigation systems, and functional user registration form components.</p>
+                    <a href="#" class="project-link">Explore Code &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Project 2: Netflix Clone -->
+            <div class="project-card">
+                <div class="project-img" style="color: #e50914;">&lt; netflix-clone /&gt;</div>
+                <div class="project-info">
+                    <h3>Netflix UI Clone</h3>
+                    <p>A high-fidelity landing and browse page replication of Netflix. Highlights an immersive dark design, pixel-perfect layout alignment, customized video layout sections, and modern accordions for the FAQ section.</p>
+                    <a href="#" class="project-link">Explore Code &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Project 3: Daraz Clone -->
+            <div class="project-card">
+                <div class="project-img" style="color: #f57224;">&lt; daraz-clone /&gt;</div>
+                <div class="project-info">
+                    <h3>Daraz E-Commerce Clone</h3>
+                    <p>A multi-category front-end replica of Pakistan's leading e-commerce portal. Showcases dense UI structures, product marketplace grids, detailed drop-down categorization menus, and highly responsive banner layouts.</p>
+                    <a href="#" class="project-link">Explore Code &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Project 4: DeFi Crypto Tracker -->
+            <div class="project-card">
+                <div class="project-img">&lt; crypto-dashboard /&gt;</div>
+                <div class="project-info">
+                    <h3>DeFi Crypto Tracker</h3>
+                    <p>A real-time data visualizer fetching Web3 API data. Designed with interactive charting libraries and optimized state management.</p>
+                    <a href="#" class="project-link">Explore Code &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Project 5: AI Copywriting Tool -->
+            <div class="project-card">
+                <div class="project-img">&lt; ai-saas-ui /&gt;</div>
+                <div class="project-info">
+                    <h3>AI Copywriting Tool</h3>
+                    <p>A sleek software-as-a-service layout built with tailored React components, complex multi-step forms, and dynamic dark aesthetics.</p>
+                    <a href="#" class="project-link">Explore Code &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Project 6: Minimalist Issue Tracker -->
+            <div class="project-card">
+                <div class="project-img">&lt; linear-clone /&gt;</div>
+                <div class="project-info">
+                    <h3>Minimalist Issue Tracker</h3>
+                    <p>A keyboard-shortcut heavy productivity application featuring robust drag-and-drop state machines and fast response rendering.</p>
+                    <a href="#" class="project-link">Explore Code &rarr;</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Let's Connect</h2>
+        <div class="contact-container">
+            <p style="margin-bottom: 2rem; color: var(--text-muted);">I'm currently open to new freelance opportunities or full-time roles. Drop a line if you want to collaborate or just grab a virtual coffee.</p>
+            
+            <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent successfully!');">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email Address" required>
+                <textarea placeholder="Tell me about your project..." required></textarea>
+                <button type="submit" class="btn btn-primary" style="border: none; cursor: pointer; align-self: flex-start;">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Sabiha.Alam. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

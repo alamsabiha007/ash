@@ -2,41 +2,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=>, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First Styled Page</title>
+    
+    <style>
+        /* [Question 2]: Set the background color and text color of the page */
+        body {
+            background-color: #f4f7f6; /* Light greyish-green background */
+            color: #333333;            /* Dark grey text for readability */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* [Question 2, 3, 4, 5]: Heading Styling */
+        h1 {
+            color: #2c3e50;           /* Changed heading text color */
+            text-align: center;       /* Center align the heading */
+            padding: 15px;            /* Added padding to heading */
+            margin: 25px;             /* Added margin around heading */
+            background-color: #e2ece9; /* Light background to highlight padding */
+        }
+
+        /* [Question 3, 4, 5]: Paragraphs Common Styling */
+        p {
+            padding: 20px;            /* Added padding to both paragraphs */
+            margin: 20px;             /* Added margin around paragraphs */
+            border: 2px solid #2c3e50; /* Add a border to all paragraphs */
+            border-radius: 6px;       /* Smooth corners for the border */
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* [Question 2, 5 & Bonus]: Styling Paragraph 1 individually */
+        .intro-p {
+            color: #1b4f72;           /* Different text color for Para 1 */
+            background-color: #ebf5fb; /* Changed background color for Para 1 */
+        }
+
+        /* [Bonus Question]: Using a class to style Paragraph 2 differently */
+        .hobby-p {
+            color: #78281f;           /* Different text color for Para 2 */
+            background-color: #fdedec; /* Different background color for Para 2 */
+            border-style: dashed;     /* Different border style to make it unique */
+        }
+    </style>
 </head>
-<style>
-    #header{
-        background-color: rgb(142, 216, 142);
-        height: 400px;
-        padding: 20px 30px 20px 30px;   /* top right bottom left (shorthand) */
-    
-    }
-    #section{
-        background-color: aquamarine;
-        height: 250px;
-        padding: 20px 30px 20px 30px;   /* top right bottom left (shorthand) */
-    }
-    #footer{
-        background-color: aqua;
-        height: 250px;padding: 20px 30px 20px 30px;   /* top right bottom left (shorthand) */
-
-    }
-</style>
-
 <body>
-    
-   <div id="header">
-    <h1>"My First Styled Page"</h1>
-    <p>"Hi there! My name is sabiha, and I am a budding web developer with a passion for creating clean, functional, and visually appealing digital experiences. Currently, I am honing my skills in HTML and CSS to bring my creative ideas to life on the screen. Beyond the world of syntax and selectors, I am a curious learner who enjoys exploring new technologies and finding elegant solutions to complex problems. I’m excited to continue growing my craft and sharing my journey through projects like this one."</p><br>
-    
-    
-    <p>"Outside of my technical pursuits, I am deeply passionate about exploring the world and enriching my mind through literature. I find great peace and wisdom in reading Islamic books, which help me stay grounded and provide a meaningful framework for how I navigate life. This thirst for knowledge is mirrored in my love for travel; I enjoy immersing myself in different cultures, visiting historical landmarks, and experiencing the breathtaking beauty of the world firsthand. For me, both reading and traveling are journeys of discovery—one inward toward spiritual growth, and the other outward toward a global perspective."</p></div>
-    <div id="section">
-        <p>section</p>
-    </div>
-    <div id="footer">
-        <p>footer</p>
-    </div>
+
+    <h1>My First Styled Page</h1>
+
+    <p class="intro-p">
+        Hi there! My name is Sabiha, and I am a budding web developer with a passion for 
+        creating clean, functional, and visually appealing digital experiences. Currently, 
+        I am honing my skills in HTML and CSS to bring my creative ideas to life on the screen. 
+        Beyond the world of syntax and selectors, I am a curious learner who enjoys exploring 
+        new technologies and finding elegant solutions to complex problems.
+    </p>
+
+    <p class="hobby-p">
+        Outside of my technical pursuits, I am deeply passionate about exploring the world and 
+        enriching my mind through literature. I find great peace and wisdom in reading Islamic books, 
+        which help me stay grounded. This thirst for knowledge is mirrored in my love for travel; 
+        I enjoy immersing myself in different cultures, visiting historical landmarks, and 
+        experiencing the breathtaking beauty of the world firsthand.
+    </p>
+
 </body>
 </html>
