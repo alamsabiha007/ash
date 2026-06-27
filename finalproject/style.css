@@ -1,5 +1,5 @@
 /* ==========================================
-   STAYEASE HOTEL BOOKING - PREMIUM CSS STYLING
+   STAYEASE HOTEL BOOKING - PREMIUM & RESPONSIVE
    ========================================== */
 
 /* 1. THEME VARIABLES (AUTO LIGHT & DARK) */
@@ -212,7 +212,7 @@ nav ul li a:hover {
     background-color: var(--primary-hover);
 }
 
-/* 5. ROOM LISTINGS (IMAGE UPDATED) */
+/* 5. ROOM LISTINGS */
 .rooms-grid {
     margin-top: 20px;
 }
@@ -245,9 +245,9 @@ nav ul li a:hover {
 }
 
 .room-image {
-    height: 220px; /* Enhanced height for clear preview */
-    background-size: cover; /* Fits perfectly without stretch */
-    background-position: center; /* Keeps the focus in the center */
+    height: 220px;
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     background-color: var(--bg-accent);
 }
@@ -419,4 +419,91 @@ footer {
     border-top: 1px solid var(--border-color);
     color: var(--text-muted);
     font-size: 0.9rem;
+}
+
+/* ==========================================
+   8. MOBILE RESPONSIVE STYLES (768px & LESS)
+   ========================================== */
+@media (max-width: 768px) {
+    
+    header {
+        padding: 15px 5%;
+        text-align: center;
+    }
+
+    .logo {
+        float: none;
+        display: block;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    nav {
+        float: none;
+        display: block;
+    }
+
+    nav ul li {
+        display: inline-block;
+        margin: 5px 12px;
+    }
+
+    .hero {
+        padding: 60px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .checker-container {
+        padding: 20px 15px;
+    }
+
+    .form-group {
+        float: none;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .btn-check {
+        float: none;
+        width: 100%;
+        margin-top: 10px;
+        padding: 14px;
+    }
+
+    .room-card {
+        float: none;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 25px;
+    }
+
+    .room-card:last-child {
+        margin-bottom: 0;
+    }
+
+    .booking-container {
+        padding: 20px;
+        width: 100%;
+    }
+
+    .form-row .form-group {
+        float: none;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .table-container {
+        overflow-x: auto;
+        width: 100%;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+        min-width: 600px;
+    }
 }
