@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StayEase | Luxury Hotel Booking System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">StayEase</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#rooms">Our Rooms</a></li>
+                <li><a href="#booking">Book Now</a></li>
+                <li><a href="#history">Booking History</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Find Your Perfect Luxury Stay</h1>
+            <p>Experience world-class hospitality and comfort.</p>
+        </div>
+        
+        <div class="checker-container">
+            <form id="check-availability-form">
+                <div class="form-group">
+                    <label for="checkin">Check-In Date</label>
+                    <input type="date" id="checkin" required>
+                </div>
+                <div class="form-group">
+                    <label for="checkout">Check-Out Date</label>
+                    <input type="date" id="checkout" required>
+                </div>
+                <div class="form-group">
+                    <label for="room-type-filter">Room Type</label>
+                    <select id="room-type-filter">
+                        <option value="all">All Rooms</option>
+                        <option value="deluxe">Deluxe Room</option>
+                        <option value="suite">Executive Suite</option>
+                        <option value="penthouse">Presidential Penthouse</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-check">Check Availability</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="rooms" class="rooms-section">
+        <h2>Our Featured Rooms</h2>
+        <div class="rooms-grid">
+            
+            <div class="room-card" data-type="deluxe">
+                <div class="room-image" style="background-image: url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=600');"></div>
+                <div class="room-details">
+                    <h3>Deluxe Ocean Room</h3>
+                    <p>King size bed, Ocean view, Free Wi-Fi, Mini Bar.</p>
+                    <span class="price">$150 / night</span>
+                    <button class="btn-select" onclick="selectRoom('Deluxe Ocean Room', 150)">Select Room</button>
+                </div>
+            </div>
+
+            <div class="room-card" data-type="suite">
+                <div class="room-image" style="background-image: url('https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=600');"></div>
+                <div class="room-details">
+                    <h3>Executive Club Suite</h3>
+                    <p>Separate living area, Personal butler, Access to VIP lounge.</p>
+                    <span class="price">$300 / night</span>
+                    <button class="btn-select" onclick="selectRoom('Executive Club Suite', 300)">Select Room</button>
+                </div>
+            </div>
+
+            <div class="room-card" data-type="penthouse">
+                <div class="room-image" style="background-image: url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=600');"></div>
+                <div class="room-details">
+                    <h3>Presidential Penthouse</h3>
+                    <p>Private infinity pool, 360 city view, Private chef on demand.</p>
+                    <span class="price">$600 / night</span>
+                    <button class="btn-select" onclick="selectRoom('Presidential Penthouse', 600)">Select Room</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="booking" class="booking-section">
+        <h2>Complete Your Reservation</h2>
+        <div class="booking-container">
+            <form id="reservation-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="john@example.com" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="selected-room">Selected Room</label>
+                        <input type="text" id="selected-room" readonly placeholder="Choose a room from above">
+                    </div>
+                    <div class="form-group">
+                        <label for="guest-count">Total Guests</label>
+                        <input type="number" id="guest-count" min="1" max="4" value="1" required>
+                    </div>
+                </div>
+
+                <div class="booking-summary">
+                    <p>Total Stay Price: <strong id="total-price">$0</strong></p>
+                </div>
+
+                <button type="submit" class="btn-book">Confirm Booking</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="history" class="history-section">
+        <h2>Your Booking History</h2>
+        <p class="history-subtitle">All your past and upcoming reservations are listed below.</p>
+        
+        <div class="table-container">
+            <table id="history-table">
+                <thead>
+                    <tr>
+                        <th>Booking ID</th>
+                        <th>Guest Name</th>
+                        <th>Room Type</th>
+                        <th>Dates</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="history-body">
+                    <tr>
+                        <td>#STE-9841</td>
+                        <td>Sabiha</td>
+                        <td>Executive Club Suite</td>
+                        <td>June 28 - June 30</td>
+                        <td><span class="status status-confirmed">Confirmed</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 StayEase Hotel Network. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
